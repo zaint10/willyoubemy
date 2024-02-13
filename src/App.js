@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
   const [isAnswerYes, setIsAnswerYes] = useState(false);
   const [noButtonTextIndex, setNoButtonTextIndex] = useState(0);
   const [yesButtonFontSize, setYesButtonFontSize] = useState(16);
+  const [isSongPlaying, setIsSongPlaying] = useState(false);
 
   const noButtonAlternates = [
     "No",
@@ -43,8 +44,29 @@ function App() {
     setYesButtonFontSize(yesButtonFontSize + 20);
   };
 
+  const handleYesButtonClick = () => {
+    setIsAnswerYes(true);
+    setIsSongPlaying(true);
+  };
+
+  useEffect(() => {
+    const audioElement = document.getElementById('valentineSong');
+    if (audioElement) {
+      if (isSongPlaying) {
+        audioElement.play();
+      } else {
+        audioElement.pause();
+      }
+    }
+
+    return () => {
+      audioElement.pause();
+    }
+  }, [isSongPlaying]);
+
   return (
     <div className="App">
+      <audio id="valentineSong" src="/assets/song.mp3" />
       {!isAnswerYes ? (
         <div className="container">
         
@@ -54,7 +76,7 @@ function App() {
         <h1>Will you be my Valentine?</h1>
         <div className='btn-container'>
           
-        <button style={{ fontSize: yesButtonFontSize }} className='btn btn-yes' onClick={() => setIsAnswerYes(true)}>
+        <button style={{ fontSize: yesButtonFontSize }} className='btn btn-yes' onClick={handleYesButtonClick}>
           Yes
         </button>
         <button onClick={handleNoButtonClick} className='btn btn-no'>
