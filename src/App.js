@@ -66,7 +66,7 @@ function App() {
       ) : (<div className="container">
         <img 
         width={150}
-        src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Valentine's Day" />
+        src="https://i.pinimg.com/originals/00/72/a9/0072a9d486565be41a322bbfb0fdefb3.gif" alt="Valentine's Day" />
         <h1>Yayyy</h1>
       </div>)}
       
