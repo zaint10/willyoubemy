@@ -8,7 +8,7 @@ function App() {
   const [isSongPlaying, setIsSongPlaying] = useState(false);
 
   const noButtonAlternates = [
-    "No",
+    "No0",
     "Are you sure?",
     "Absolutely NOT?",
     "Really sure?",
